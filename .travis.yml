@@ -1,0 +1,15 @@
+language: node_js
+sudo: false
+node_js:
+  - "8"
+install:
+  - travis_wait 30 npm install
+script:
+  - travis_wait 30 npm run build
+deploy:
+  provider: pages
+  local_dir: build
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
